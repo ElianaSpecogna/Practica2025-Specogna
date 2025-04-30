@@ -1,0 +1,13 @@
+package com.banco.gestionCuentas;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class GestionCuentasApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
