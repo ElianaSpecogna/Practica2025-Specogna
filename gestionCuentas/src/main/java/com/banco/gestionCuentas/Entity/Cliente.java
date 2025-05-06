@@ -1,15 +1,12 @@
 package com.banco.gestionCuentas.Entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+
 
 public class Cliente {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
 	
+	private int id;
 	private String nombre;
 	private String apellido;
 	private int dni;
@@ -17,18 +14,17 @@ public class Cliente {
 	private String clave;
 	private String direccion;
 	private String mail;
+	private Boolean estado;
 	
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	public Cliente(String nombre, String apellido, int dni, String nombreUsuario, String clave,
-			String direccion, String mail) {
+	public Cliente(int id, String nombre, String apellido, int dni, String nombreUsuario, String clave,
+			String direccion, String mail, Boolean estado) {
 		super();
-		
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -36,10 +32,19 @@ public class Cliente {
 		this.clave = clave;
 		this.direccion = direccion;
 		this.mail = mail;
+		this.estado = estado;
 	}
 
 
 
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -95,6 +100,18 @@ public class Cliente {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 	
