@@ -1,8 +1,5 @@
 package com.banco.gestionCuentas.Entity;
 
-
-
-
 public class Cliente {
 	
 	

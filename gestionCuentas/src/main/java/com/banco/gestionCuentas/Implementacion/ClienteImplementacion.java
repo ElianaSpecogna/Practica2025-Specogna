@@ -1,72 +1,83 @@
 package com.banco.gestionCuentas.Implementacion;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.banco.gestionCuentas.Entity.Cliente;
 import com.banco.gestionCuentas.Service.ClienteInterfaz;
-
+@Service
 public class ClienteImplementacion implements ClienteInterfaz {
 	
 	
-	public List <Cliente> lista = new ArrayList<>();
+	private List <Cliente> listaCliente = new ArrayList<>();
 
 	@Override
-	public Cliente crearCliente(Cliente cliente) {
+	public void crearCliente(Cliente cliente) {
 		
-		lista.add(cliente);
+		listaCliente.add(cliente);
 		
-		return cliente;
+	
 	}
 
 	@Override
 	public List<Cliente> listadoCliente() {
 		
-		return lista;
+		return listaCliente;
 	}
 
 	@Override
 	public Cliente buscarClienteDni(int dni) {
 		
-		for(Cliente cliente : lista) {
-			if(cliente.getDni() == dni) {
-				
+		for(Cliente c: listaCliente) {
+			if(c.getDni() == dni) {
+		    return c;	
 			}
-			return cliente;
 		}
 		return null;
 	
 	}
 
 	@Override
-	public Cliente eliminarCliente(int id) {
-		
-		int index = -1;
-		 for(int i = 0; i < lista.size(); i++) {
-			 if(lista.get(i).getId()== id) {
-				 index = i;
-				 break;
-			 }
-		 }
-		 if(index!= -1) {
-			 Cliente eliminado = lista.get(index);
-			 lista.remove(index);
-			 return eliminado;
-		 }
-		
-		
-		return null;
+	public void eliminarCliente(int id) {
+	Cliente clienteE = new Cliente();
+		 for (Cliente cliente : listaCliente) {
+			if (id == cliente.getId()) {
+				clienteE= cliente;
+				
+			}
+		}
+		 if (clienteE != null) {
+			 listaCliente.remove(clienteE);
+			
+		}
+	
 	}
 
 	@Override
 	public Cliente buscarClienteId(int id) {
-		for(Cliente cliente : lista) {
-			if(cliente.getId()==id) {
-				
+		for(Cliente c : listaCliente) {
+			if(c.getId()==id) {
+			return c;
 			}
-			return cliente;
+			
 		}
 		return null;
 	}
+
+	@Override
+	public void actualizarCliente(Cliente clienteActualizado) {
+		for(int i = 0; i <listaCliente.size(); i++) {
+			if(listaCliente.get(i).getDni()== clienteActualizado.getDni()) {
+				listaCliente.set(i, clienteActualizado);
+				break;
+			}
+		}
+		
+	}
+
+
 
 }

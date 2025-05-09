@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/boostrap.min.css">
+	
+	<title>Inicio</title>
+	</head>
+	<body>
+          <h2>Menú</h2>
+		  <a th:href="@{/alta}">Alta Cliente</a>
+		  <a >Buscar dni</a>
+		  <a th:href="@{/lista}">Listado de Clientes</a>
+	   
+		  <script src="${pageContext.request.contextPath}/resources/js/jquery.slim.min.js"></script>
+		  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+		  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
+	</body>
+	</html>
