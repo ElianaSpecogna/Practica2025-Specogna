@@ -1,6 +1,6 @@
 package com.banco.gestionCuentas.Controller;
 
-import java.util.Random;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banco.gestionCuentas.Entity.Cliente;
 import com.banco.gestionCuentas.Service.ClienteInterfaz;
@@ -23,12 +24,6 @@ public class ClienteController {
 	@PostMapping("/altaCliente")
 	public String guardarCliente(Cliente cliente, Model model) {
 	
-		Random id_ramdon = new Random();
-		
-		int id = id_ramdon.nextInt(20);
-		
-		cliente.setId(id);
-		
 		cliservice.crearCliente(cliente);
 		
 		model.addAttribute("cliente", cliente);
@@ -37,13 +32,8 @@ public class ClienteController {
 		
 	}
 	
-	
-	
-	
-	
-	/*
-	@RequestMapping (value = "/buscarPorDni/{dni}", method = RequestMethod.GET)
-	public String buscarClienteDni(@PathVariable int dni, Model model ) {
+	@GetMapping("/buscarPorDni")
+	public String buscarClienteDni(@RequestParam("dni") int dni, Model model ) {
 		Cliente clie= cliservice.buscarClienteDni(dni);
 		if(clie != null) {
 			model.addAttribute("cliente", clie);
@@ -53,12 +43,8 @@ public class ClienteController {
 			return "cliente/listaCliente";
 		}
 		
-		
-		
-	
-		
 	}
-	*/
+	
 	
 	@PostMapping("/eliminar/{id}")
 	public String eliminarCliente (@PathVariable int id){

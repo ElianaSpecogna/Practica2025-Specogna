@@ -1,25 +1,26 @@
 package com.banco.gestionCuentas.Implementacion;
 
-import java.util.ArrayList;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.banco.gestionCuentas.Entity.Cliente;
 import com.banco.gestionCuentas.Service.ClienteInterfaz;
+
 @Service
 public class ClienteImplementacion implements ClienteInterfaz {
 	
 	
 	private List <Cliente> listaCliente = new ArrayList<>();
+	private int contadorId = 1;
 
 	@Override
 	public void crearCliente(Cliente cliente) {
-		
+		cliente.setId(generarId());
 		listaCliente.add(cliente);
-		
-	
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class ClienteImplementacion implements ClienteInterfaz {
 
 	@Override
 	public Cliente buscarClienteDni(int dni) {
-		
 		for(Cliente c: listaCliente) {
 			if(c.getDni() == dni) {
 		    return c;	
@@ -77,6 +77,10 @@ public class ClienteImplementacion implements ClienteInterfaz {
 		}
 		
 	}
+	
+	  private int generarId() {
+	        return contadorId++;
+	    }
 
 
 

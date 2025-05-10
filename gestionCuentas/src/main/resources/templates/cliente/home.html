@@ -1,21 +1,81 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="css/boostrap.min.css">
-	
-	<title>Inicio</title>
-	</head>
-	<body>
-          <h2>Menú</h2>
-		  <a th:href="@{/alta}">Alta Cliente</a>
-		  <a >Buscar dni</a>
-		  <a th:href="@{/lista}">Listado de Clientes</a>
-	   
-		  <script src="${pageContext.request.contextPath}/resources/js/jquery.slim.min.js"></script>
-		  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-		  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <title>Banco Online - Inicio</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+        .btn-primary, .btn-outline-primary {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 6px;
+            margin: 10px;
+            min-width: 180px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-outline-primary {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+	    <h2>Bienvenido a Banco Macro</h2>
+	    <p class="lead mb-4">Seleccione la operación que desea realizar:</p>
+	    <div>
+	        <a th:href="@{/alta}" class="btn btn-primary">
+	            <i class="bi bi-person-plus-fill me-2"></i> Alta Cliente
+	        </a>
+	        <form th:action="@{/buscarPorDni}" method="get" style="display: inline-block;">
+	            <input type="text" name="dni" placeholder="Ingrese DNI" required>
+	            <button type="submit" class="btn btn-outline-primary">
+	                <i class="bi bi-search me-2"></i> Buscar Cliente por DNI
+	            </button>
+	        </form>
+	        <a th:href="@{/lista}" class="btn btn-outline-primary">
+	            <i class="bi bi-list-ul me-2"></i> Listado de Clientes
+	        </a>
+	        </div>
+	</div>
 
-	</body>
-	</html>
+    <script th:src="@{/js/jquery.slim.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
