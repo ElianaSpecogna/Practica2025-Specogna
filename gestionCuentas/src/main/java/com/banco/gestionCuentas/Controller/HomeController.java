@@ -6,18 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.banco.gestionCuentas.Entity.Cliente;
-import com.banco.gestionCuentas.Service.ClienteInterfaz;
+import com.banco.gestionCuentas.Service.ClienteInterface;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-	private ClienteInterfaz cliservice;
+	private ClienteInterface cliservice;
 	
  @GetMapping("/")
  public String home () {
 	 
-	return "cliente/home";
+	return "inicio/home";
 	 
  }
 	

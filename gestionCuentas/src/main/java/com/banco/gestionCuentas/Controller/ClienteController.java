@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banco.gestionCuentas.Entity.Cliente;
-import com.banco.gestionCuentas.Service.ClienteInterfaz;
+import com.banco.gestionCuentas.Service.ClienteInterface;
 
 @Controller
 public class ClienteController {
 	
 	@Autowired
-	private ClienteInterfaz cliservice;
+	private ClienteInterface cliservice;
 	
 	@PostMapping("/altaCliente")
 	public String guardarCliente(Cliente cliente, Model model) {

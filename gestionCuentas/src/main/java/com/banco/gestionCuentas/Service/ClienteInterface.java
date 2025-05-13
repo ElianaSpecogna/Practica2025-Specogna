@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.banco.gestionCuentas.Entity.Cliente;
 
-public interface ClienteInterfaz {
+public interface ClienteInterface {
 	
 	public void  crearCliente (Cliente cliente);
 	

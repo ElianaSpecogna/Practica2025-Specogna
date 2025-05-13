@@ -1,22 +1,26 @@
 package com.banco.gestionCuentas.Entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Cuenta {
 	private int id;
 	private int numeroCta;
-	private String fechaIngreso;
+	private Date fechaIngreso;
 	private double saldoActual;
 	private boolean estado;
 	private double limiteExtraccion;
 	private Cliente cliente;
+	private List<Movimiento> movimientos = new ArrayList<>();
 	
 	public Cuenta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cuenta(int id, int numeroCta, String fechaIngreso, double saldoActual, boolean estado,
-			double limiteExtraccion, Cliente cliente) {
+	public Cuenta(int id, int numeroCta, Date fechaIngreso, double saldoActual, boolean estado,
+			double limiteExtraccion, Cliente cliente, List<Movimiento> movimientos) {
 		super();
 		this.id = id;
 		this.numeroCta = numeroCta;
@@ -25,7 +29,18 @@ public class Cuenta {
 		this.estado = estado;
 		this.limiteExtraccion = limiteExtraccion;
 		this.cliente = cliente;
+		this.movimientos = movimientos;
 	}
+	
+
+	public List<Movimiento> getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(List<Movimiento> movimientos) {
+		this.movimientos = movimientos;
+	}
+
 
 	public int getId() {
 		return id;
@@ -43,11 +58,11 @@ public class Cuenta {
 		this.numeroCta = numeroCta;
 	}
 
-	public String getFechaIngreso() {
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(String fechaIngreso) {
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 

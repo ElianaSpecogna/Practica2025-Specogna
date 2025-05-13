@@ -8,10 +8,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.banco.gestionCuentas.Entity.Cliente;
-import com.banco.gestionCuentas.Service.ClienteInterfaz;
+import com.banco.gestionCuentas.Service.ClienteInterface;
 
 @Service
-public class ClienteImplementacion implements ClienteInterfaz {
+public class ClienteImplementacion implements ClienteInterface {
 	
 	
 	private List <Cliente> listaCliente = new ArrayList<>();
