@@ -31,11 +31,15 @@ public class ClienteImplementacion implements ClienteInterface {
 
 	@Override
 	public Cliente buscarClienteDni(int dni) {
+	    System.out.println("Buscando DNI: " + dni);
 		for(Cliente c: listaCliente) {
+			System.out.println("Cliente en lista: " + c.getDni());
 			if(c.getDni() == dni) {
+				System.out.println("Cliente encontrado: " + c.getNombre());
 		    return c;	
 			}
 		}
+		System.out.println("Cliente no encontrado");
 		return null;
 	
 	}

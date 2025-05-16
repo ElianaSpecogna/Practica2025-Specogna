@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/57faba85b1.js" crossorigin="anonymous"></script>
+	<link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+	<title>Modificar Cliente</title>
+</head>
+
+<body>
+
+	<div class="container mt-5">
+		<h2>Modificar Cliente</h2>
+
+		<form th:action="@{/actualizar}" th:object="${cliente}" method="post">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre</label>
+				<input type="text" id="nombre" th:field="*{nombre}" class="form-control" required />
+			</div>
+
+			<div class="mb-3">
+				<label for="apellido" class="form-label">Apellido</label>
+				<input type="text" id="apellido" th:field="*{apellido}" class="form-control" required />
+			</div>
+
+			<div class="mb-3">
+				<label for="dni" class="form-label">DNI</label>
+				<input type="number" id="dni" th:field="*{dni}" class="form-control" required />
+			</div>
+
+			<div class="mb-3">
+				<label for="nombreUsuario" class="form-label">Usuario</label>
+				<input type="text" id="nombreUsuario" th:field="*{nombreUsuario}" class="form-control" required />
+			</div>
+
+			<div class="mb-3">
+				<label for="mail" class="form-label">Correo electrónico</label>
+				<input type="email" id="mail" th:field="*{mail}" class="form-control" required />
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Estado</label>
+				<select th:field="*{estado}" class="form-select" required>
+					<option th:value="true" th:text="'Habilitado'" th:selected="*{estado} == true"></option>
+					<option th:value="false" th:text="'Inhabilitado'" th:selected="*{estado} == false"></option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+			<a th:href="@{/lista}" class="btn btn-secondary ms-2">Cancelar</a>
+			<a th:href="@{ / }" class="btn btn-secondary"><i class="fas fa-home"></i> Volver al Inicio
+					            </a>
+		</form>
+	</div>
+
+	<script th:src="@{/js/jquery.slim.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

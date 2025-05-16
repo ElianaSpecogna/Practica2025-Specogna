@@ -8,15 +8,22 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-image: url('/imagenes_inicio/imagen_inicio.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;  
+			background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+			
+			
         }
         .container {
-            background-color: #fff;
+			
+			background-color: rgba(255, 255, 255, 0.2);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -52,30 +59,68 @@
             background-color: #007bff;
             color: white;
         }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+		.footer {
+			width: 100%;
+			    position: relative;  
+			    bottom: 0;
+			    background-color: #a3c9f5; 
+			    color: #ffffff;  
+			    padding: 10px 0;
+			    font-size: 14px;
+			    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+			    margin-top: 20px;
+		}
     </style>
 </head>
 <body>
-	<div class="container">
-	    <h2>Bienvenido a Banco Macro</h2>
-	    <p class="lead mb-4">Seleccione la operación que desea realizar:</p>
-	    <div>
-	        <a th:href="@{/alta}" class="btn btn-primary">
-	            <i class="bi bi-person-plus-fill me-2"></i> Alta Cliente
-	        </a>
-	        <form th:action="@{/buscarPorDni}" method="get" style="display: inline-block;">
-	            <input type="text" name="dni" placeholder="Ingrese DNI" required>
-	            <button type="submit" class="btn btn-outline-primary">
-	                <i class="bi bi-search me-2"></i> Buscar Cliente por DNI
-	            </button>
-	        </form>
-	        <a th:href="@{/lista}" class="btn btn-outline-primary">
-	            <i class="bi bi-list-ul me-2"></i> Listado de Clientes
-	        </a>
-	        </div>
-	</div>
+    <div class="container">
+        <h2>Banco Online</h2>
+        <p class="lead mb-4">Seleccione la operación que desea realizar:</p>
 
+        <div>
+            <a th:href="@{/alta}" class="btn btn-primary">
+                Alta Cliente
+            </a>
+
+            <a th:href="@{/lista}" class="btn btn-outline-primary">
+                Listado de Clientes
+            </a>
+        </div>
+
+        <div class="mt-4">
+          
+            <form th:action="@{/buscar}" method="get" style="display: inline-block;">
+                <input type="text" name="dniParam" placeholder="Ingrese DNI" required>
+                <button type="submit" class="btn btn-outline-primary">Buscar</button>
+            </form>
+        </div>
+		
+		<footer class="footer text-center py-2 mt-3">
+		    <p class="mb-0">&copy; 2025 Banco Online. Todos los derechos reservados.</p>
+		</footer>
+
+        <!-- Resultados de la búsqueda -->
+        <div class="result" th:if="${cliente}">
+            <h4>Resultado de la Búsqueda:</h4>
+            <p><strong>DNI:</strong> <span th:text="${cliente.dni}"></span></p>
+            <p><strong>Nombre:</strong> <span th:text="${cliente.nombre}"></span></p>
+            <p><strong>Correo:</strong> <span th:text="${cliente.correoElectronico}"></span></p>
+        </div>
+
+        <!-- Mensaje en caso de error -->
+        <div class="result" th:if="${mensaje}">
+            <p th:text="${mensaje}"></p>
+        </div>
+    </div>
     <script th:src="@{/js/jquery.slim.min.js}"></script>
     <script th:src="@{/js/popper.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
+	
 </body>
 </html>

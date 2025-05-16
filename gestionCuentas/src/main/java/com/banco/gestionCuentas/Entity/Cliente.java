@@ -1,7 +1,6 @@
 package com.banco.gestionCuentas.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Cliente {
 	
@@ -15,7 +14,7 @@ public class Cliente {
 	private String direccion;
 	private String mail;
 	private Boolean estado;
-	private List<Cuenta> cuentas = new ArrayList<>();
+	
 	
 	public Cliente() {
 		super();

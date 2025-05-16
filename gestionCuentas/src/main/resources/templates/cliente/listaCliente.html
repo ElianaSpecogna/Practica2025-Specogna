@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,11 +23,8 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .add-client-btn {
-            margin-top: 10px;
-            display: block;
-            text-align: center;
-        }
+		
+		
     </style>
 	
 </head>
@@ -51,6 +48,10 @@
                     </tr>
                 </thead>
                 <tbody>
+					<!-- Muestra un mensaje si la lista esta vacia -->
+					               <tr th:if="${listaC.size()} == 0">
+					                   <td colspan="8" class="text-center">No se encontraron clientes.</td>
+					               </tr>
                     <tr th:each="cliente : ${listaC}">
                         <td th:text="${cliente.id}"></td>
                         <td th:text="${cliente.nombre}"></td>
@@ -59,24 +60,38 @@
                         <td th:text="${cliente.nombreUsuario}"></td>
                         <td th:text="${cliente.mail}"></td>
                         <td th:text="${cliente.estado ? 'Habilitado' : 'Inhabilitado'}"></td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <form th:action="@{'/eliminar/' + ${cliente.id}}" method="post">
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-user-xmark"></i></button>
-                                </form>
-                                <form th:action="@{'/modificar/' + ${cliente.id}}" method="get">
-                                    <button type="submit" class="btn btn-primary btn-sm"> <i class="fa-solid fa-user-pen"></i></button>
-                                </form>
-                            </div>
-                        </td>
+						<td>
+						    <form th:action="@{'/eliminar/' + ${cliente.id}}" method="post" class="delete-form d-inline">
+						        <input type="hidden" name="id" th:value="${cliente.id}">
+						        <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('¿Seguro que desea eliminar?')">
+						            <i class="fas fa-trash-alt"></i> Eliminar
+						        </button>
+						    </form>
+
+						    <a th:href="@{'/modificar/' + ${cliente.id}}" class="btn btn-primary btn-sm">
+						        <i class="fas fa-edit"></i> Editar
+						    </a>
+						</td>
+
+
                     </tr>
                 </tbody>
             </table>
         </div>
+		
+		<div class="mt-3" th:if="${mensaje}">
+		        <p class="alert alert-warning" th:text="${mensaje}"></p>
+		    </div>
 
-        <div class="add-client-btn">
-            <a href="/altaCliente" class="btn btn-success">Agregar Nuevo Cliente</a>
-        </div>
+			<div class="d-flex justify-content-between mt-3">
+			    <a th:href="@{/alta}" class="btn btn-success me-2">
+			        <i class="fas fa-plus"></i> Agregar Nuevo Cliente
+			    </a>
+			    
+			    <a th:href="@{ / }" class="btn btn-secondary">
+			        <i class="fas fa-home"></i> Volver al Inicio
+			    </a>
+			</div>			
     </div>
 
 	
