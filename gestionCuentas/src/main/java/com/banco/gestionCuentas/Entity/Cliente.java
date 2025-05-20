@@ -1,6 +1,7 @@
 package com.banco.gestionCuentas.Entity;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
 	
@@ -15,14 +16,15 @@ public class Cliente {
 	private String mail;
 	private Boolean estado;
 	
-	
+	private List<Cuenta>cuentas = new ArrayList<>();
+
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Cliente(int id, String nombre, String apellido, int dni, String nombreUsuario, String clave,
-			String direccion, String mail, Boolean estado) {
+			String direccion, String mail, Boolean estado, List<Cuenta> cuentas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -33,11 +35,17 @@ public class Cliente {
 		this.direccion = direccion;
 		this.mail = mail;
 		this.estado = estado;
+		this.cuentas = cuentas;
 	}
 
+	public List<Cuenta> getCuentas() {
+		return cuentas;
+	}
 
+	public void setCuentas(List<Cuenta> cuentas) {
+		this.cuentas = cuentas;
+	}
 
-	
 	public int getId() {
 		return id;
 	}

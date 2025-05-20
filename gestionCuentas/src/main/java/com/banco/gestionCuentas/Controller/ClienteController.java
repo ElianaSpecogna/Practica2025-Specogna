@@ -2,6 +2,7 @@ package com.banco.gestionCuentas.Controller;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,13 @@ public class ClienteController {
 	public String buscarClientePorDni(@RequestParam("dniParam") int dni, Model model) {
 	    Cliente clie = cliservice.buscarClienteDni(dni);
 	    if (clie != null) {
-	        model.addAttribute("listaC", List.of(clie));
+	    	List<Cliente> lista = new ArrayList<>();
+	        lista.add(clie);
+	        model.addAttribute("listaC", lista);
 	        
 	    } else {
 	        model.addAttribute("mensaje", "Cliente no encontrado con DNI: " + dni);
-	        model.addAttribute("listaC", List.of());
+	        model.addAttribute("listaC", new ArrayList<>());
 	        System.out.println("Cliente no encontrado");
 	    }
 	    
