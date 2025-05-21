@@ -61,14 +61,11 @@
                         <td th:text="${cliente.mail}"></td>
                         <td th:text="${cliente.estado ? 'Habilitado' : 'Inhabilitado'}"></td>
 						<td>
-						    <form th:action="@{'/eliminar/' + ${cliente.id}}" method="post" class="delete-form d-inline">
-						        <input type="hidden" name="id" th:value="${cliente.id}">
-						        <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('¿Seguro que desea eliminar?')">
+						    <a th:href="@{/eliminar/{id}(id=${cliente.id})}" class="btn btn-primary btn-sm">
 						            <i class="fas fa-trash-alt"></i> Eliminar
-						        </button>
-						    </form>
+						    </a>
 
-						    <a th:href="@{'/modificar/' + ${cliente.id}}" class="btn btn-primary btn-sm">
+						    <a th:href="@{/modificar/{id}(id=${cliente.id})}" class="btn btn-primary btn-sm">
 						        <i class="fas fa-edit"></i> Editar
 						    </a>
 						</td>

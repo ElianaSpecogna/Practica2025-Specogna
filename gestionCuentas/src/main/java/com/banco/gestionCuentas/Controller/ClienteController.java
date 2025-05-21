@@ -44,10 +44,9 @@ public class ClienteController {
 	    return "cliente/listaCliente";
 	}
 
-	@PostMapping("/eliminar/{id}")
+	@GetMapping("/eliminar/{id}")
 	public String eliminarCliente(@PathVariable int id) {
 		cliservice.eliminarCliente(id);
-
 		return "redirect:/lista";
 	}
 
